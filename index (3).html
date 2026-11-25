@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payal Singh | Business Analyst Portfolio</title>
+  <meta name="description" content="Payal Singh – Business Analyst and Data Analyst in Adelaide. Requirements, process improvement, Power BI, SQL and workflow automation.">
+
+  <!-- Tailwind CDN (styling) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS (scroll animations) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* keep section titles visible below the fixed navbar */
+    #hero, #about, #skills, #expertise, #experience, #work, #education, #certifications, #contact { scroll-margin-top: 90px; }
+
+    * { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+
+    /* ===== COLOURS – change these to restyle the whole site ===== */
+    :root {
+      --bg: #0b0b0b;
+      --text: #ffffff;
+      --muted: #1f2937;
+      --accent: #a78bfa;     /* purple accent (hers was blue) */
+      --accent-2: #8b5cf6;   /* hover colour */
+    }
+    body { background: var(--bg); color: var(--text); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-2); text-decoration: underline; }
+
+    .section { padding: 4rem 0; border-top: 1px solid var(--muted); }
+    .h-title { color: var(--accent); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .75rem 1.1rem; border-radius: .6rem; font-weight: 700;
+      border: 1px solid var(--accent); color: var(--accent);
+      transition: all .15s ease; text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(167,139,250,.18); text-decoration: none; }
+    .btn-solid { background: var(--accent); color: #0b0b0b; border-color: transparent; }
+    .btn-solid:hover { background: var(--accent-2); color: #0b0b0b; }
+
+    .chip {
+      display: inline-block; padding: .35rem .8rem; border-radius: 999px;
+      border: 1px solid var(--muted); color: #e5e7eb; font-weight: 600;
+      background: rgba(31,41,55,.35);
+    }
+    .skill { display: inline-flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center; }
+
+    .card { background: #111318; border: 1px solid var(--muted); border-radius: 1rem; }
+    .card.hover-up { transition: transform .2s, border-color .2s; }
+    .card.hover-up:hover { transform: translateY(-4px); border-color: var(--accent); }
+
+    .nav-blur { backdrop-filter: blur(8px); background: rgba(0,0,0,.7); }
+    .gradient-text {
+      background: linear-gradient(90deg, #a78bfa, #60a5fa);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* tick-mark bullet lists used in Experience */
+    .ticks { list-style: none; }
+    .ticks li { position: relative; padding-left: 1.6rem; margin-bottom: .55rem; }
+    .ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    /* Wallpaper on HERO and ABOUT. If the image file is missing you just get the dark gradient. */
+    #hero, #about {
+      background-color: #0b0b0b;
+      background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+        url("./assets/hero-wallpaper.jpg") center / cover no-repeat,
+        radial-gradient(circle at 20% 20%, #2a1f5a, #0b0b0b 70%);
+    }
+    #about.section { border-top-color: transparent; }
+    @media (min-width: 1024px) { #hero, #about { background-attachment: fixed; } }
+
+    /* typewriter cursor */
+    #cursor { display: inline-block; margin-left: 2px; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="fixed top-0 inset-x-0 nav-blur z-50 border-b border-[var(--muted)]">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="text-xl font-bold tracking-wide h-title">PAYAL SINGH</a>
+
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#hero">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills &amp; Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Key Work</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center rounded-xl px-5 py-2 font-semibold text-black shadow-lg"
+           style="background:var(--accent)">Get In Touch</a>
+        <button id="menuBtn" class="md:hidden text-2xl" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 flex-col gap-3 text-sm">
+      <a href="#about">About Me</a>
+      <a href="#skills">Skills &amp; Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Key Work</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header id="hero" class="min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-[0.95fr_1.05fr] gap-4 items-center">
+
+      <!-- LEFT: photo (add assets/profile.png; initials show until then) -->
+      <div class="flex justify-center md:justify-end pr-0 md:pr-8 lg:pr-12" data-aos="fade-right">
+        <div class="relative">
+          <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full ring-4 ring-violet-400/40 shadow-2xl overflow-hidden relative flex items-center justify-center text-7xl font-bold text-violet-300"
+               style="background:#1b1830">
+            PS
+            <img src="./assets/profile.png" alt="Payal Singh"
+                 class="absolute inset-0 w-full h-full object-cover object-center"
+                 onerror="this.remove()" decoding="async" loading="eager" />
+          </div>
+          <span class="absolute -inset-1 rounded-full bg-gradient-to-tr from-violet-500/30 to-sky-500/30 blur-lg -z-10"></span>
+        </div>
+      </div>
+
+      <!-- RIGHT: text + buttons -->
+      <div class="text-center md:text-left" data-aos="fade-left" data-aos-delay="100">
+        <p class="text-lg text-gray-300">HELLO!</p>
+        <h1 class="mt-2 text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          I’m <span class="text-violet-300">Payal Singh</span>
+        </h1>
+        <p class="mt-6 text-2xl md:text-3xl text-gray-300 leading-relaxed">
+          Business Analyst | Data Analyst | Process Improvement<br>
+          <span class="text-lg sm:text-xl"><span id="typed-text"></span><span id="cursor">|</span></span>
+        </p>
+        <div class="mt-8 flex flex-wrap md:justify-start justify-center gap-3">
+          <a href="https://www.linkedin.com/in/payalsinggh" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+          <a href="mailto:payalsingh.ps29@yahoo.com" class="btn">Email</a>
+          <!-- Upload your PDF into the assets folder with this exact name -->
+          <a href="./assets/Payal_Singh_Resume.pdf" class="btn btn-solid" download>Download CV</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section" data-aos="fade-up">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 h-title">About</h2>
+      <p class="mt-6 text-xl md:text-2xl text-gray-300 leading-relaxed">
+        Hi, I’m <strong>Payal Singh</strong> — a Business Analyst with 2 years of experience delivering HR and Payroll
+        system improvement initiatives for the <strong>City of Onkaparinga</strong> and <strong>Infosys</strong>.
+        I’m experienced in requirements gathering, business process analysis, functional specifications, UAT
+        coordination, data cleansing, workflow automation and KPI reporting. With a
+        <strong>Master of Business Analytics</strong> from the University of Adelaide, I work with
+        <strong>Microsoft Dynamics CRM</strong>, <strong>SAP</strong>, <strong>Advanced Excel</strong>,
+        <strong>Power BI</strong> and <strong>SQL</strong>.
+      </p>
+      <div class="mt-6 space-y-2 text-gray-200">
+        <p><strong>Profile:</strong> Business Analysis, Data &amp; Process Improvement</p>
+        <p><strong>Domain:</strong> HR &amp; Payroll, Procurement, Finance, Hospitality</p>
+        <p><strong>Looking to apply my skills to:</strong> Sales, inventory, procurement and delivery operations</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills" class="section" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 h-title">Skills</h2>
+      <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" data-stagger>
+
+        <div class="skill" data-aos="fade-up"><i data-feather="bar-chart-2" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Power BI</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="database" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">SQL</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="file-text" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Advanced Excel</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="pie-chart" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Tableau</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="users" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Dynamics CRM</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="box" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">SAP</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="clipboard" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Requirements Gathering</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="book-open" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Business Rules &amp; Specs</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="git-merge" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Process Mapping</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="check-square" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Test Cases &amp; UAT</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="zap" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Workflow Automation</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="repeat" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">n8n / Zapier</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="shield" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Data Governance</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="filter" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Data Cleansing</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="trending-up" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">KPI Reporting</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="cpu" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Regression, K-Means, PCA</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="message-circle" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Stakeholder Management</span></div>
+        <div class="skill" data-aos="fade-up"><i data-feather="award" class="w-5 h-5 text-[var(--accent)]"></i><span class="chip">Staff Training</span></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERTISE ================= -->
+  <section id="expertise" class="section">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 h-title" data-aos="fade-up">Expertise</h2>
+
+      <div class="grid md:grid-cols-3 gap-6" data-stagger>
+
+        <div class="card p-6" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold mb-3">Business Analyst</h3>
+          <p class="text-gray-300 leading-relaxed">
+            I turn messy processes into clear, documented rules that teams can follow. I run workshops, write
+            business rules and functional specifications, and coordinate UAT so changes land smoothly.
+          </p>
+          <ul class="mt-4 space-y-2 text-gray-300 list-disc ml-5">
+            <li><strong>40+ business rules</strong> signed off for HR &amp; Payroll (LSL, higher duties, RDO, TOIL).</li>
+            <li>Current-state and future-state <strong>process mapping</strong>.</li>
+            <li>Trained <strong>8 staff</strong> and cut support queries by <strong>30–40%</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="card p-6" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold mb-3">Data Analyst</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Reliable data and reporting people actually use. I validate and reconcile data, then agree KPI
+            definitions with stakeholders. Toolset: <strong>SQL</strong>, <strong>Power BI</strong> and
+            <strong>Advanced Excel</strong>.
+          </p>
+          <ul class="mt-4 space-y-2 text-gray-300 list-disc ml-5">
+            <li>Reviewed <strong>10–15 reports</strong> and agreed <strong>5–8 KPI reports/dashboards</strong>.</li>
+            <li>Improved <strong>LSL liability reporting</strong> by cleansing and reconciling leave data.</li>
+            <li>Real-time <strong>data-quality flagging</strong> and automated reporting.</li>
+          </ul>
+        </div>
+
+        <div class="card p-6" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold mb-3">Automation &amp; Systems</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Removing manual steps. I work with <strong>n8n</strong>, <strong>Zapier</strong>, forms and workflows,
+            plus enterprise systems like <strong>SAP</strong> and <strong>Dynamics CRM</strong>.
+          </p>
+          <ul class="mt-4 space-y-2 text-gray-300 list-disc ml-5">
+            <li>Built <strong>agentic BI agents</strong> that answer business questions from a database.</li>
+            <li>Inventoried HR/Payroll forms and prioritised the <strong>top 10 for automation</strong>.</li>
+            <li>Processed <strong>50+ SAP payments</strong> with zero billing errors.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card p-6 mt-6" data-aos="fade-up">
+        <h4 class="text-xl font-semibold mb-3">How I Work</h4>
+        <ol class="list-decimal ml-6 space-y-2 text-gray-300">
+          <li><strong>Clarify:</strong> understand the problem, the people and the decisions involved.</li>
+          <li><strong>Map it:</strong> document the current process and agree the future state.</li>
+          <li><strong>Trust the data:</strong> validate, cleanse and reconcile before reporting.</li>
+          <li><strong>Specify &amp; test:</strong> business rules, functional specs and UAT.</li>
+          <li><strong>Enable:</strong> train users, document fixes and keep improving.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience" class="section">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 h-title" data-aos="fade-up">Experience</h2>
+
+      <div class="space-y-6">
+
+        <!-- OrgPulse -->
+        <div class="card p-6" data-aos="fade-up">
+          <div class="flex items-center gap-3">
+            <i data-feather="briefcase" class="w-5 h-5 text-[var(--accent)]"></i>
+            <h3 class="text-2xl font-semibold">Data Analyst — OrgPulse</h3>
+          </div>
+          <div class="mt-2 flex flex-wrap gap-4 text-gray-400 text-sm">
+            <span class="inline-flex items-center gap-1"><i data-feather="calendar" class="w-4 h-4"></i> Nov 2026 – Present</span>
+            <span class="inline-flex items-center gap-1"><i data-feather="map-pin" class="w-4 h-4"></i> Sydney (Remote)</span>
+          </div>
+          <ul class="mt-4 text-gray-200 ticks">
+            <li>Collaborate with stakeholders to improve data collection, storage and reporting processes.</li>
+            <li>Analyse employer social data to identify emerging patterns across industries, signal types and company size.</li>
+            <li>Build and maintain automated workflows using n8n, Zapier or equivalent tools, removing manual steps from data collection, monitoring and reporting.</li>
+            <li>Designed and built agentic BI agents that query the signal database, interpret the results and answer business questions.</li>
+            <li>Set up automated reporting and flagging to identify data quality issues in real time.</li>
+          </ul>
+        </div>
+
+        <!-- City of Onkaparinga -->
+        <div class="card p-6" data-aos="fade-up">
+          <div class="flex items-center gap-3">
+            <i data-feather="briefcase" class="w-5 h-5 text-[var(--accent)]"></i>
+            <h3 class="text-2xl font-semibold">Business Data Analyst — City of Onkaparinga</h3>
+          </div>
+          <div class="mt-2 flex flex-wrap gap-4 text-gray-400 text-sm">
+            <span class="inline-flex items-center gap-1"><i data-feather="calendar" class="w-4 h-4"></i> Nov 2025 – Oct 2026</span>
+            <span class="inline-flex items-center gap-1"><i data-feather="map-pin" class="w-4 h-4"></i> Noarlunga, SA</span>
+          </div>
+          <ul class="mt-4 text-gray-200 ticks">
+            <li>Standardised how Payroll and HR apply pay and leave rules: <strong>40+ business rules signed off</strong> (LSL eligibility, leave deferral, higher duties, RDO and TOIL) via requirements workshops and functional specifications.</li>
+            <li>Reduced manual handling by cataloguing every HR and Payroll form, removing duplicates and prioritising the <strong>top 10 for automation</strong>.</li>
+            <li>Trained <strong>8 staff</strong> and achieved <strong>30–40% fewer support queries</strong> by documenting common fixes and moving the team to root-cause fixes escalated through governance.</li>
+            <li>Improved Long Service Leave liability reporting by validating, cleansing and reconciling leave data with SQL and Excel (<strong>42% of scheduled audit activities</strong> completed in four months).</li>
+            <li>Reviewed <strong>10–15 existing reports</strong> and agreed <strong>5–8 KPI reports or Power BI dashboards</strong> with stakeholders, using standard definitions.</li>
+          </ul>
+          <p class="mt-4 text-gray-300"><strong>Tools:</strong> SQL, Excel, Power BI, Business Rules, Functional Specifications, UAT</p>
+        </div>
+
+        <!-- Infosys -->
+        <div class="card p-6" data-aos="fade-up">
+          <div class="flex items-center gap-3">
+            <i data-feather="briefcase" class="w-5 h-5 text-[var(--accent)]"></i>
+            <h3 class="text-2xl font-semibold">Technology Support Analyst — Infosys BPM Ltd</h3>
+          </div>
+          <div class="mt-2 flex flex-wrap gap-4 text-gray-400 text-sm">
+            <span class="inline-flex items-center gap-1"><i data-feather="calendar" class="w-4 h-4"></i> Dec 2021 – Jan 2023</span>
+            <span class="inline-flex items-center gap-1"><i data-feather="map-pin" class="w-4 h-4"></i> Hyderabad, India</span>
+          </div>
+          <ul class="mt-4 text-gray-200 ticks">
+            <li>Processed <strong>50+ subcontractor and financial payments</strong> (USD 250K–1M) in SAP with <strong>zero billing errors</strong> and <strong>95% of invoices on time</strong>.</li>
+            <li>Improved procurement compliance by administering SAP purchase requisitions, purchase orders, variations and amendments.</li>
+            <li>Gave project managers and leadership accurate resource and cost visibility through weekly Advanced Excel management reports.</li>
+            <li>Streamlined onboarding for onshore (USA, Canada) and offshore (India) subcontractors in Microsoft Dynamics CRM.</li>
+          </ul>
+          <p class="mt-4 text-gray-300"><strong>Tools:</strong> SAP, Microsoft Dynamics CRM, Advanced Excel</p>
+        </div>
+
+        <!-- Guzman y Gomez -->
+        <div class="card p-6" data-aos="fade-up">
+          <div class="flex items-center gap-3">
+            <i data-feather="briefcase" class="w-5 h-5 text-[var(--accent)]"></i>
+            <h3 class="text-2xl font-semibold">Shift Leader — Guzman y Gomez</h3>
+          </div>
+          <div class="mt-2 flex flex-wrap gap-4 text-gray-400 text-sm">
+            <span class="inline-flex items-center gap-1"><i data-feather="calendar" class="w-4 h-4"></i> Jun 2023 – Jun 2026</span>
+            <span class="inline-flex items-center gap-1"><i data-feather="map-pin" class="w-4 h-4"></i> King William Street, Adelaide</span>
+          </div>
+          <ul class="mt-4 text-gray-200 ticks">
+            <li>Trained, coached and supported team members, driving continuous improvement in performance, service standards and product quality.</li>
+            <li>Supervised busy service periods while maintaining food safety, cleanliness and compliance standards.</li>
+            <li>Supported a customer-focused culture by proactively identifying ways to improve the guest experience.</li>
+            <li>Managed inventory counts and stock control using Crunchtime Inventory.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KEY WORK (project-style cards) ================= -->
+  <section id="work" class="section">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 h-title text-center" data-aos="fade-up">Key Work</h2>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#2a1f5a]">
+            <i data-feather="book-open" class="w-12 h-12 text-violet-300"></i>
+            <span class="chip absolute bottom-3 left-3">Business Analysis</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">HR &amp; Payroll Business Rules</h3>
+            <p class="text-gray-400 mt-2 text-sm">Workshops and functional specifications so pay and leave rules are applied consistently. <strong class="text-gray-200">40+ rules signed off.</strong></p>
+          </div>
+        </div>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#1e3a5f]">
+            <i data-feather="zap" class="w-12 h-12 text-sky-300"></i>
+            <span class="chip absolute bottom-3 left-3">Automation</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Form Inventory &amp; Automation Plan</h3>
+            <p class="text-gray-400 mt-2 text-sm">Catalogued every HR and Payroll form, removed duplicates and standardised templates. <strong class="text-gray-200">Top 10 prioritised.</strong></p>
+          </div>
+        </div>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#2a1f5a]">
+            <i data-feather="database" class="w-12 h-12 text-violet-300"></i>
+            <span class="chip absolute bottom-3 left-3">SQL / Excel</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">LSL Liability Reporting &amp; Audit</h3>
+            <p class="text-gray-400 mt-2 text-sm">Validated, cleansed and reconciled leave data. <strong class="text-gray-200">42% of audit activities done in 4 months.</strong></p>
+          </div>
+        </div>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#1e3a5f]">
+            <i data-feather="bar-chart-2" class="w-12 h-12 text-sky-300"></i>
+            <span class="chip absolute bottom-3 left-3">Power BI / KPIs</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Management Reporting Review</h3>
+            <p class="text-gray-400 mt-2 text-sm">Assessed reports for fit-for-purpose and agreed standard KPI definitions. <strong class="text-gray-200">10–15 reviewed, 5–8 agreed.</strong></p>
+          </div>
+        </div>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#2a1f5a]">
+            <i data-feather="box" class="w-12 h-12 text-violet-300"></i>
+            <span class="chip absolute bottom-3 left-3">SAP</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Procurement &amp; Payments</h3>
+            <p class="text-gray-400 mt-2 text-sm">Invoice processing and cost tracking against purchase orders. <strong class="text-gray-200">Zero billing errors, 95% on time.</strong></p>
+          </div>
+        </div>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#1e3a5f]">
+            <i data-feather="cpu" class="w-12 h-12 text-sky-300"></i>
+            <span class="chip absolute bottom-3 left-3">AI / Automation</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Agentic BI Agents</h3>
+            <p class="text-gray-400 mt-2 text-sm">Agents that query a signal database and answer business questions, with real-time data-quality flags.</p>
+          </div>
+        </div>
+
+        <!--
+          WHEN YOU HAVE A GITHUB PROJECT, copy this block, remove the arrows and edit it:
+          <a href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" rel="noopener" class="card hover-up overflow-hidden" data-aos="fade-up">
+            <div class="relative h-44">
+              <img src="./assets/my-project.png" alt="Project name" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <span class="chip absolute bottom-3 left-3">Power BI</span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-xl font-semibold">Project name</h3>
+              <p class="text-gray-400 mt-2 text-sm">One-line description.</p>
+            </div>
+          </a>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+  <section id="education" class="section">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 h-title" data-aos="fade-up">Education</h2>
+      <div class="grid md:grid-cols-2 gap-6" data-stagger>
+        <div class="card p-6" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold">Master of Business Analytics — The University of Adelaide</h3>
+          <p class="text-gray-400">Completed Dec 2024</p>
+          <p class="mt-3 text-gray-200">Applied regression, K-Means clustering and PCA to large datasets and presented findings and recommendations.</p>
+        </div>
+        <div class="card p-6" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold">Bachelor of Commerce, Computer Applications — Osmania University</h3>
+          <p class="text-gray-400">Completed Sep 2021 · India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CERTIFICATIONS ================= -->
+  <section id="certifications" class="section">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 h-title" data-aos="fade-up">Certifications</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+
+        <div class="card hover-up overflow-hidden" data-aos="fade-up">
+          <div class="relative h-40 flex items-center justify-center bg-gradient-to-tr from-[#0b0b0b] to-[#2a1f5a]">
+            <i data-feather="award" class="w-12 h-12 text-violet-300"></i>
+            <span class="chip absolute bottom-3 left-3">Performance Education</span>
+          </div>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Professional Year Program</h3>
+            <p class="text-gray-400 mt-2 text-sm">Adelaide, SA · Completed Oct 2025</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="relative py-20 bg-cover bg-center bg-no-repeat md:bg-fixed"
+           style="background-color:#0b0b0b; background-image:url('./assets/footer.jpg')">
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-aos="fade-up" class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+        <div class="w-20 h-1 mx-auto mb-6" style="background:var(--accent)"></div>
+        <p class="text-gray-400 max-w-3xl mx-auto">Feel free to reach out for roles, collaborations or questions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- LEFT: contact info -->
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(167,139,250,.12)"><i data-feather="mail" class="w-5 h-5 text-[var(--accent)]"></i></div>
+              <div>
+                <h4 class="font-medium text-white">Email</h4>
+                <p class="text-gray-400"><a href="mailto:payalsingh.ps29@yahoo.com">payalsingh.ps29@yahoo.com</a></p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(167,139,250,.12)"><i data-feather="map-pin" class="w-5 h-5 text-[var(--accent)]"></i></div>
+              <div>
+                <h4 class="font-medium text-white">Location</h4>
+                <p class="text-gray-400">Adelaide, South Australia</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(167,139,250,.12)"><i data-feather="linkedin" class="w-5 h-5 text-[var(--accent)]"></i></div>
+              <div>
+                <h4 class="font-medium text-white">LinkedIn</h4>
+                <p class="text-gray-400"><a href="https://www.linkedin.com/in/payalsinggh" target="_blank" rel="noopener">linkedin.com/in/payalsinggh</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: form (powered by Formspree – see setup steps) -->
+        <div data-aos="fade-left">
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+                class="p-8 rounded-xl border border-gray-800" style="background:#0f1115">
+
+            <input type="hidden" name="_subject" value="Portfolio contact from Payal’s website">
+            <!-- spam trap: leave empty -->
+            <p class="hidden"><label>Leave this field empty: <input name="_gotcha"></label></p>
+
+            <div class="mb-6">
+              <label for="name" class="block text-gray-300 mb-2">Your Name</label>
+              <input id="name" name="name" type="text" required placeholder="Your name"
+                     class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-400 text-white">
+            </div>
+            <div class="mb-6">
+              <label for="email" class="block text-gray-300 mb-2">Your Email</label>
+              <input id="email" name="email" type="email" required placeholder="you@example.com"
+                     class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-400 text-white">
+            </div>
+            <div class="mb-6">
+              <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Role enquiry"
+                     class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-400 text-white">
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block text-gray-300 mb-2">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Hello, I would like to talk about..."
+                        class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-400 text-white"></textarea>
+            </div>
+            <button type="submit" class="w-full text-black px-6 py-3 rounded-md font-semibold transition hover:opacity-90"
+                    style="background:var(--accent)">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+
+      <p class="text-center text-gray-500 text-sm mt-16">© <span id="year"></span> Payal Singh</p>
+    </div>
+  </section>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Icons
+    feather.replace();
+
+    // Scroll animations
+    AOS.init({ duration: 700, easing: 'ease-out-quart', offset: 80, once: true, anchorPlacement: 'top-bottom' });
+
+    // Stagger children of any [data-stagger] container
+    document.querySelectorAll('[data-stagger]').forEach(container => {
+      [...container.children].forEach((el, i) => {
+        if (el.hasAttribute('data-aos')) el.setAttribute('data-aos-delay', String(i * 100));
+      });
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex');
+    }));
+
+    // Typewriter effect (edit the sentence below!)
+    document.addEventListener('DOMContentLoaded', () => {
+      const text = "I turn business requirements into better processes, data and decisions.";
+      const el = document.getElementById('typed-text');
+      let i = 0;
+      (function type() {
+        if (i < text.length) { el.textContent += text.charAt(i++); setTimeout(type, 35); }
+      })();
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
