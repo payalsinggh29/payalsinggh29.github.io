@@ -6,7 +6,7 @@ A personal portfolio website showcasing my experience in business analysis, data
 
 ## Profile 
 
-I’m a Business Analyst with 2 years of experience delivering HR and Payroll system improvement initiatives for the City of Onkaparinga and Infosys. I hold a Master of Business Analytics from the University of Adelaide and work with Microsoft Dynamics CRM, SAP, Advanced Excel, Power BI and SQL.
+I'm Payal Singh a Business Data Analyst with 2 years of hands-on experience in data analysis, financial reporting, data visualization, and stakeholder engagement where I have delivered HR and Payroll system improvement initiatives for the City of Onkaparinga and Infosys and a Master of Business Analyst graduate. I turn complex datasets into clear, actionable insights using Power BI, SQL, Excel, Tableau, Python, and R. I believe in continuous learning, and staying hands-on with evolving technologies.
 
 ## Features
 
